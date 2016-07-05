@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2" ng-repeat="(index, report) in reports">
+			<div class="card-admin">	
+				<div class="card-admin-reporterName">Reporter: {{report.REPORTER_NAME}}</div><br>
+				<div class="card-admin-reporteeName">Reported User: {{report.REPORTEE_NAME}}</div><br>
+				<div class="card-admin-reporteeText">Reported Text: {{report.REPORT_TEXT}}</div><br>
+				<div class="card-admin-ignoreButton"><button class="btn btn-default" ng-click="ignoreReport(index)">Ignore Report</button></div>
+				<div class="card-admin-deleteButton"><button class="btn btn-default" ng-click="deleteUser(index)">Delete User</button></div>
+			</div>
+		</div>
+	</div>
+</div>

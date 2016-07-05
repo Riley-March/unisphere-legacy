@@ -1,0 +1,40 @@
+html { 
+  background: url(../images/darkBackgroundResize.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.navbar-brand{ 
+	position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+}
+
+.welcome-page{
+  	overflow: auto;
+  	padding: 10px;
+  	position: relative;
+  	color: white;
+}
+
+.welcome-header{
+	width: 100%;
+	padding: 10px;
+	text-align: center;
+	font-size: 50px;
+}
+
+.welcome-body{
+	width: 50%;
+	padding: 10px;
+	font-size: 20px;
+}
+
+.welcome-footer{
+	text-align: center;
+}

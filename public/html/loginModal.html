@@ -1,0 +1,16 @@
+<div class='ng-modal' ng-show='show'>
+  	<div class='ng-modal-overlay' ng-click='hideModal()'></div>
+  	<div class='ng-modal-dialog' ng-style='dialogStyle'>
+    <div class='ng-modal-close' ng-click='hideModal()'>X</div>
+    <div class='ng-modal-dialog-content' ng-transclude></div>
+  </div>
+</div>
+
+         <div class="card">
+	           	<div class="card-name">
+	                   <p>{{post.POST_USERNAME}}</p>
+	               </div>
+	               <div class="card-content">
+	                   <p>{{post.POST_TEXT}} - {{post.POST_TIME}}</p>
+	               </div>
+	           </div><br>

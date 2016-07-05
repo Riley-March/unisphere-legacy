@@ -1,0 +1,76 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="searchbar">
+				<div class="input-group">
+					<input type="text" id="search-field" class="form-control" ng-model="searchString" placeholder="Start typing to search...">
+					<span class="input-group-btn">
+						<button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+					</span>
+				</div>
+			</div><br><br>
+			<form id="postForm" ng-submit="submitPost()">
+				<div class="postbar">
+					<div class="input-group">
+						<div class="postbox">
+							<input type="text" id="postBox" class="form-control" placeholder="Whats on your mind?" ng-model="postMessage" required>
+						</div>
+						<span class="input-group-btn">
+				        		<button type="submit" class="btn btn-default"><b>Post</b></button>
+				      	</span>
+			    	</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2" ng-repeat="(index, post) in posts | orderBy:'POST_ID':true | searchFor2:searchString">
+			<div class="card-normal">
+				<div class="card-normal-header">
+					<div class="card-normal-photo"><img src="{{post.POST_IMAGE}}" class="img-responsive"></div>
+					<div class="card-normal-username">
+						<p><b>{{post.POST_USERNAME}}</b> - {{post.POST_TIME}}
+						<span class="glyphicon glyphicon-flag" ng-click="flagPost(index, post)"></span></p>
+					</div>
+					<div class="card-normal-votesIcon">
+						<span class="glyphicon glyphicon-star" ng-click="upvotePost(index, post)" id="voteIcon" ng-hide="post.voted" style="color:{{post.voteIconColor}}"></span>
+						<span class="glyphicon glyphicon-star" ng-click="downvotePost(index, post)" id="voteIcon" ng-show="post.voted" style="color:{{post.voteIconColor}}"></span>
+						<div class="card-normal-numberVotes">{{post.numberVotes}}</div>
+					</div>
+					<div class="card-normal-description">
+						<p>{{post.POST_TEXT}}</p>
+					</div>
+					<div class="card-normal-commentIcon">
+						<span class="glyphicon glyphicon-comment" ng-click="showComments(index, post.POST_ID)" ng-hide="showComment[index]"></span>
+						<span class="glyphicon glyphicon-remove" ng-click="hideComments(index, post.POST_ID)" ng-show="showComment[index]"></span>
+						<div class="card-normal-numberVotes">{{post.numberComments}}</div>
+					</div>
+				</div>
+			</div>
+			<div ng-show="showComment[index]">
+				<div ng-repeat="(index, comment) in comments | orderBy:'time':true"> 
+					<div class="card-normal-comment">
+						<div class="card-normal-comment-text">
+							<b>{{comment.COM_USER}}</b>: {{comment.COM_TXT}} <span class="glyphicon glyphicon-flag" ng-click="flagComment(index, comment)"></span>
+						</div>
+						<div class="card-normal-comment-time">
+							{{comment.COM_TIME}}
+						</div>
+					</div>
+				</div>
+				<form id="commentForm" ng-submit="postComment(index, post)">
+					<div class="postbar">
+						<div class="input-group">
+							<div class="postbox">
+								<input type="text" id="commentBox" class="form-control" placeholder="Post Comment" required>
+							</div>
+							<span class="input-group-btn">
+					        		<button type="submit" class="btn btn-default"><b>Comment</b></button>
+					      	</span>
+				    	</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

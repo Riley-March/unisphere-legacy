@@ -1,0 +1,89 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="searchbar">
+				<div class="input-group">
+					<input type="text" id="search-field" class="form-control" ng-model="searchString" placeholder="Start typing to search...">
+					<span class="input-group-btn">
+						<button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+					</span>
+				</div>
+			</div><br>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2 col-md-offset-5">
+			<button class="btn btn-lg btn-primary btn-block" ng-click="open()">
+				<b>New Event</b>
+			</button>
+		</div>
+	</div><br>
+	<div class="row">
+		<div class="col-md-6" ng-repeat="(index, event) in events | searchForEvent:searchString | orderBy:'EVENT_ID':true">
+			<div class="card-event">
+				<div class="card-event-header">
+					<div class="card-event-photo"><img src="http://www46@wlc1www46.webland.ch/unisphere/php/images/profile_images/profile_image_{{event.USER_ID}}.png" width="100%" height="100%"></div>
+					<div class="card-event-username">
+						<p><b>{{event.EVENT_NAME}}</b> - in {{event.EVENT_TIME}}
+						<span class="glyphicon glyphicon-flag" ng-click="reportEvent(index, event)"></span>
+						<br>
+						<p2><i>{{event.USER_NAME}} - {{event.numberJoinedUsers}} people going</p2></i></p>
+					</div>
+					<div class="card-event-peopleIcon">
+						<span class="glyphicon glyphicon-user" ng-click="joinEvent(index, event)" ng-hide="event.joined" id="leaveIcon" style="color:{{event.peopleIconColor}}"></span>
+						<span class="glyphicon glyphicon-user" ng-click="leaveEvent(index, event)" ng-show="event.joined" id="joinIcon" style="color:{{event.peopleIconColor}}"></span>
+					</div>
+					<div class="card-event-description">
+						<p>{{event.EVENT_DESCR}}</p>
+					</div>
+					<div class="card-event-commentIcon">
+						<span class="glyphicon glyphicon-comment" ng-click="showComments(index, event.EVENT_ID)" ng-hide="showComment[index]"></span>
+						<span class="glyphicon glyphicon-remove" ng-click="hideComments(index)" ng-show="showComment[index]"></span>
+					</div>
+				</div>
+			</div>
+			<div ng-show="showComment[index]">
+				<div ng-repeat="(index, comment) in comments | orderBy:'time':true"> 
+					<div class="card-normal-comment">
+						<div class="card-normal-comment-text">
+							<b>{{comment.COM_USER}}</b>: {{comment.COM_TXT}} <span class="glyphicon glyphicon-flag" ng-click="flagComment(index, comment)"></span>
+						</div>
+						<div class="card-normal-comment-time">
+							{{comment.COM_TIME}}
+						</div>
+					</div>
+				</div>
+				<form id="commentForm" ng-submit="postComment(index, event)">
+					<div class="postbar">
+						<div class="input-group">
+							<div class="postbox">
+								<input type="text" id="commentBox" class="form-control" placeholder="Post Comment" required>
+							</div>
+							<span class="input-group-btn">
+					        	<button type="submit" class="btn btn-default"><b>Comment</b></button>
+					      	</span>
+				    	</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<modal title="New Event" visible="showModal" style="text-align: center;">
+	<form ng-submit="createEvent()">
+	    <div class="form-group">
+	      	<input type="text" class="form-control" id="eventName" placeholder="Event Name" required>
+	    </div>
+	    <div class="form-group">
+	      	<input type="text" class="form-control" id="description" placeholder="Description" required>
+	    </div>
+	    <div class="form-group">
+	    	<input type="date" class="form-control" id="date" name="data" required>
+	    </div>
+	    <div class="form-group">
+	    	<input type="time" class="form-control" id="time" name="time" required>
+	    </div>
+	    <button type="submit" class="btn btn-default">Create Event</button>
+    </form>
+</modal>

@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="searchbar">
+				<div class="input-group">
+					<input type="text" id="search-field" class="form-control" ng-model="searchString" placeholder="Start typing to search...">
+					<span class="input-group-btn">
+						<button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+<br>
+	<div class="row">
+		<div class="col-md-6" ng-repeat="(index, profile) in profiles | searchFor:searchString | orderBy:'USER_NAME':false">
+			<div class="card-normal">
+				<div class="card-people-header">
+					<div class="card-people-photo"><img src="http://www46@wlc1www46.webland.ch/unisphere/php/images/profile_images/profile_image_{{profile.USER_ID}}.png" class="img-responsive"></div>
+					<div class="card-people-username">
+						<p><b>{{profile.USER_NAME}}  </b><i>@{{profile.USER_ALIAS}}</i>
+						<span class="glyphicon glyphicon-flag" ng-click="reportPerson(index, profile)"></span></p>
+					</div>
+					<div class="card-people-votes">
+						<span class="glyphicon glyphicon-star" ng-click="upvotePeople(index, profile)" id="voteIcon" ng-hide="profile.voted" style="color:{{profile.voteIconColor}}"></span>
+						<span class="glyphicon glyphicon-star" ng-click="downvotePeople(index, profile)" id="voteIcon" ng-show="profile.voted" style="color:{{profile.voteIconColor}}"></span>
+					</div>
+					<div class="card-people-description"><p>{{profile.USER_DESCRIPTION}}</p></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

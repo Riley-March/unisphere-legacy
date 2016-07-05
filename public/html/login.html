@@ -1,0 +1,29 @@
+<div class="container">
+	<form class="form-signin">       
+		<h2 class="form-signin-heading"><b>Login</b></h2>
+	      <input type="text" class="form-control" ng-model="user.email" id="USER_EMAIL" name="USER_EMAIL" placeholder="Email Address" required=""/><br>   
+	      <input type="password" class="form-control" ng-model="user.password" id="USER_PASSWORD" name="USER_PASSWORD" placeholder="Password" required=""/><br>   
+	      <button class="btn btn-lg btn-primary btn-block" ng-click="submit()"><b>Login</b></button> 
+	      <h3><a ui-sref="register.signup">Register</a></h3>
+	      <h3><a href="/#forgotPassword">Forgot Password</a></h3>  
+    </form>
+</div>
+
+<modal title="Register" visible="showModal">
+	<div class="form-group">
+		<input type="text" class="form-control" ng-model="formData.email" name="USER_EMAIL" placeholder="Email Address" required=""/><br>
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" ng-model="formData.name" name="USER_NAME" placeholder="Full Name" required=""/><br> 
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" ng-model="formData.alias" name="USER_ALIAS" placeholder="Alias" required=""/><br>
+	</div>
+	<div class="form-group">
+		<input type="text" class="form-control" ng-model="formData.desc" name="USER_DESC" placeholder="Description" required=""/><br>
+	</div>
+	<a class="btn btn-default" ng-click="addUser()">Register</a><br>
+</modal>
+
+
+

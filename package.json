@@ -1,0 +1,18 @@
+{
+"scripts":{
+   "start": "node server.js"	
+},
+
+"main": "server.js",
+
+"dependencies" :
+  { "express" : "*"
+  , "cheerio" : "*"
+  , "mysql" : "*"
+  , "request" : "*"
+  , "body-parser" : "*"
+  , "nodemailer" : "*"
+  , "jsonwebtoken" : "*"
+  , "express-jwt" : "*"
+  }
+}

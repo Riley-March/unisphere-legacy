@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="card-profile">
+				<div class="card-profile-photo"><img src="http://www46@wlc1www46.webland.ch/unisphere/php/images/profile_images/profile_image_{{USER_ID}}.png" width="100%" height="100%"></div>
+				<div class="card-profile-header">
+					<div class="card-profile-username">
+						<p><b>{{USER_NAME}} </b><i>@{{USER_ALIAS}}</i></p>
+					</div>
+				</div>
+				<div class="card-profile-description"><p>{{USER_DESCRIPTION}}</p><br>
+				<button class="btn btn-default" ng-click="open()">
+						<span class="glyphicon glyphicon-edit" style="font-size: 15px"></span>
+				</button>
+				</div>
+			</div><br>
+		</div>
+	</div>
+</div>
+
+<modal title="Edit Profile" visible="showModal">
+    <div class="form-group">
+      	<label for="name">Name</label>
+      	<input type="text" class="form-control" id="name" placeholder="Name" />
+    </div>
+    <div class="form-group">
+      	<label for="alias">Alias</label>
+      	<input type="text" class="form-control" id="alias" placeholder="Alias" />
+    </div>
+    <div class="form-group">
+      	<label for="description">Description</label>
+      	<input type="text" class="form-control" id="description" placeholder="Description" />
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="update()">Update</button>
+</modal>

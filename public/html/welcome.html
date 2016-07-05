@@ -1,0 +1,92 @@
+<div class="container">
+	<div class="welcome-page">
+		<div class="welcome-header">
+			<b>Welcome To Unisphere</b>
+		</div><br>
+		<div class="welcome-body">
+			<b>Unisphere is an exclusive online directory and notice board that automatically connects you with everyone at your University or Business.
+			Plan events, sell goods, meet new people and exchange information through a fast and easy to use online platform.<br><br>
+			<ul>
+				<li>Plan Parties and other Events </li>
+				<li>Exchange Information</li>
+				<li>Post Sales to the Notice Board</li>
+				<li>Find Study Buddies</li>
+			</ul></b>
+		</div><br>
+		<div class="welcome-footer">
+			<button class="btn btn-lg btn-primary" ng-click="login()"><b>Login</b></button>
+			<button class="btn btn-lg btn-warning" ng-click="register()"><b>Register</b></button><br><br><br>
+			Copyright Unisphere 2015<br><br>
+			Sidney de Vries | Riley March | Aiden De Loryn
+			
+		</div>
+	</div>
+</div>
+
+<modal title="Login" visible="showModal">
+	<form id="loginForm" ng-submit="submit()">
+		<div class="form-group">
+			<label for="name">Email Address</label>
+			<input type="text" class="form-control required" ng-model="email" id="USER_EMAIL" placeholder="Email Address" required/>
+		</div>
+		<div class="form-group">
+			<label for="name">Password</label>
+			<input type="password" class="form-control" ng-model="password" id="USER_PASSWORD" placeholder="Password" required/>
+		</div>
+		
+		<button type="submit" class="btn btn-default" id="loginButton"><b>Login</b></button><br><br>
+		<a ng-click="forgotPassword()">Forgot Password?</a><br>
+	</form>
+</modal>
+
+<modal title="Register" visible="registerModal">
+	<form ng-submit="submitRegister()">
+		<div class="form-group">
+			<label for="email">Email Address</label>
+			<input type="email" class="form-control" ng-model="email" id="email" placeholder="Email Address" required/>
+		</div>
+		<div class="form-group">
+			<label for="name">Full Name</label>
+			<input type="text" class="form-control" ng-model="name" id="name" placeholder="Full Name" required/>
+		</div>
+		<div class="form-group">
+			<label for="alias">Alias</label>
+			<input type="text" class="form-control" ng-model="alias" id="alias" placeholder="Alias e.g. Student" required/>
+		</div>
+		<div class="form-group">
+			<label for="description">Description</label>
+			<textarea class="form-control" rows="2" cols="50" maxlength="300" placeholder="Decription" ng-model="description" id="description" required></textarea>
+		</div>
+		<div class="form-group">
+			<label for="photo">Profile Image</label>
+			<input type="file" class="form-control" id="photo" name="USER_PHOTO" required><br>
+		</div>
+		<button type="submit" class="btn btn-default"><b>Register</b></button><br>
+	</form>
+</modal>
+
+<modal title="Confirm Account" visible="confirmModal">
+	<form ng-submit="checkKeycode()">
+		<div class="form-group">
+			<h3>A code was sent to your registered email address. Insert it here to verify your account.</h3>
+		</div>
+		<div class="form-group">
+			<label for="keycode">Keycode</label>
+			<input type="text" class="form-control" ng-model="keycode" id="keycode" placeholder="Keycode" required>
+		</div>
+		<button type="submit" class="btn btn-default"><b>Confirm</b></button><br>
+	</form>
+</modal>
+
+<modal title="Forgot Password" visible="passwordModal">
+	<form ng-submit="sendPassword()">
+		<div class="form-group">
+			<h3>Enter you email address and your password will be sent to it.</h3>
+		</div>
+		<div class="form-group">
+			<label for="email">Email Address</label>
+			<input type="email" class="form-control" ng-model="emailAddress" id="emailAddress" placeholder="Email Address" required>
+		</div>
+		<button type="submit" class="btn btn-default"><b>Send</b></button><br>
+	</form>
+</modal>
